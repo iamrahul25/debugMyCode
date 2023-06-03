@@ -1,11 +1,12 @@
-import './App.css';
+import "./App.css";
+import Screens from "./pages/Screens";
 
 function App() {
-	return (
-		<div className="App">
-			This is the home page 
-		</div>
-	);
+  return (
+    <div className="App">
+      <Screens />
+    </div>
+  );
 }
 
 export default App;
