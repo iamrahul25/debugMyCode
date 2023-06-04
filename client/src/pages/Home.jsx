@@ -2,7 +2,14 @@ import React from "react";
 import "../styles/home.css";
 import Navbar from "../components/Navbar";
 
+//Import Context API for Global State
+import { useSocket } from "../context/SocketProvider";
+
 function Home() {
+
+  //Importing Socket from Context API
+  const socket = useSocket();
+
   return (
     <>
       <div className="home">
