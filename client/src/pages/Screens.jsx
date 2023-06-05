@@ -11,7 +11,10 @@ const Screens = () => {
   const { tags, setTags } = useContext(StateContext)
 
   const handleMessageSend = (e) => {
-    e.preventDefault();
+    if(e){
+      e.preventDefault();
+    }
+    
     setMessge([...messge, inputText]);
     setInputText("");
   };
@@ -98,7 +101,7 @@ const Screens = () => {
         </div>
 
         <div className="chat-input">
-          <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} placeholder="Type here..." className="input-style "></input>
+        <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)}   onKeyDown={(e) => {if (e.key === "Enter") {handleMessageSend();}}} placeholder="Type here..." className="input-style "></input>
           <button onClick={handleMessageSend} className="btn">send</button>
         </div>
 
