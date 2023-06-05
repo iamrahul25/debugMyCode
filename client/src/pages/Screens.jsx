@@ -3,12 +3,18 @@ import "../styles/screen.css";
 // import muteBtn from "../img/microphone.png";
 
 const Screens = () => {
-  const [tags, setTags] = useState([
-    "React",
-    "Javascript",
-    "NodeJS",
-    "MongoDB",
-  ]);
+
+  const [inputText, setInputText] = useState("");
+  const [messge , setMessge] = useState([]);
+
+  const [tags, setTags] = useState(["React","Javascript","NodeJS","MongoDB"]);
+
+  const handleMessageSend = (e) => {
+    e.preventDefault();
+    setMessge([...messge, inputText]);
+    setInputText("");
+  };
+
   return (
     <div className="screens">
       <div className="prblm-div">
@@ -75,24 +81,23 @@ const Screens = () => {
           <button className="btn">Next</button>
         </div>
       </div>
+
       <div className="chat-section-div">
         <div className="chat-section">
-          <div className="chat-msg">
-            <span className="chat-name"></span>
-            <p className="chat-text">
-              Lorem ipsum dolor sit amet consectetur adipisicing voluptatu.
-            </p>
-          </div>
+            {messge.map((msg) => (
+              <div className="chat-msg">
+              <p className="chat-text">{msg}</p>
+              </div>
+            ))}
         </div>
+
         <div className="chat-input">
-          <input
-            type="text"
-            placeholder="Type here..."
-            className="input-style "
-          ></input>
-          <button className="btn">send</button>
+          <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} placeholder="Type here..." className="input-style "></input>
+          <button onClick={handleMessageSend} className="btn">send</button>
         </div>
+
       </div>
+
       <div className="tags-div main-tags-div">
         <span>Main Tags : </span>
         {tags.map((tag) => (
