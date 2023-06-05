@@ -1,11 +1,12 @@
 :root {
-  --primary-color: #45a049;
+  --primary-color: #2696eb;
+  --accent-color:#eb6826;
   --brdr-rad: 10px;
   --shadow-color: #c9c3c3;
 }
 
 .screens {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 10px;
@@ -24,7 +25,8 @@
 .prblm-div {
   display: flex;
   flex-direction: column;
-  background-color: #ced0d2;
+  background-color: #321E1E;
+  color: white;
   grid-row: 1/3;
   padding: 10px;
   box-shadow: 2px 2px 15px 5px var(--shadow-color);
@@ -45,6 +47,7 @@
 }
 .prblm input {
   width: 80%;
+  background-color: #ffffff;
 }
 
 .prblm input:focus {
@@ -85,7 +88,8 @@
 }
 .prblm-div-main {
   grid-row: 1/5;
-  background-color: #ced0d2;
+  background-color: #321E1E;
+  color: whitesmoke;
   /* background-color: aqua; */
   padding: 10px;
   margin: 10px;
@@ -110,9 +114,9 @@
   margin: 0 10px;
 }
 
-.prblm-main input {
+/* .prblm-main input {
   width: 70%;
-}
+} */
 .prblm-main input:focus {
   border-bottom: 2px solid var(--primary-color);
   /* box-shadow: 1px 1px 1px 1px #dfdfdf; */
@@ -163,7 +167,7 @@
 }
 
 .git-link-div {
-  background-color: darkgrey;
+  background-color: rgb(255, 255, 255);
   display: flex;
   /* flex-direction: column; */
   align-items: center;
@@ -248,8 +252,7 @@
   margin: 10px;
   padding: 10px;
   border-radius: var(--brdr-rad);
-  width: fit-content;
-  max-width: 80%;
+  max-width: 60%;
   position: relative;
 }
 .chat-name {
@@ -267,6 +270,8 @@
   font-size: 0.8em;
   padding: 5px;
   border-radius: 0 var(--brdr-rad) var(--brdr-rad) var(--brdr-rad);
+  max-width: 60%;
+  word-wrap: break-word;
 }
 .main-tags-div {
   display: flex;
@@ -287,9 +292,11 @@
   outline: none;
   border-radius: var(--brdr-rad);
 
-  width: 100%;
-  background-color: #dddada;
+  width: 80%;
+  background-color: #3e2828;
+  color: whitesmoke;
   padding: 5px 10px;
+  margin-left: 10px;
   border-bottom: 2px solid transparent;
 }
 

@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "../styles/screen.css";
+import StateContext from "../context/StateContextProvider";
 // import muteBtn from "../img/microphone.png";
 
 const Screens = () => {
 
   const [inputText, setInputText] = useState("");
-  const [messge , setMessge] = useState([]);
+  const [messge, setMessge] = useState([]);
 
-  const [tags, setTags] = useState(["React","Javascript","NodeJS","MongoDB"]);
+  const { tags, setTags } = useContext(StateContext)
 
   const handleMessageSend = (e) => {
     e.preventDefault();
@@ -20,19 +21,21 @@ const Screens = () => {
       <div className="prblm-div">
         <div className="prblm">
           <h3>Problem statement:</h3>
-          <input
+          <span className="input-style">sjkndsnjdnsnda</span>
+          {/* <input
             type="text"
             className="input-style"
             placeholder="Enter problem statement"
-          />
+          /> */}
         </div>
         <div className="prblm">
           <h3>Problem Description:</h3>
-          <input
+          <span className="input-style">sjkndsnjdnsnda</span>
+          {/* <input
             type="text"
             className="input-style"
             placeholder="Enter problem description"
-          />
+          /> */}
         </div>
       </div>
       <div className="git-link-div">
@@ -58,19 +61,21 @@ const Screens = () => {
         <div className="prblm-div-main">
           <div className="prblm-main">
             <h3>Problem statement:</h3>
-            <input
+            <span className="input-style">sjkndsnjdnsnda</span>
+            {/* <input
               type="text"
               className="input-style"
               placeholder="Enter problem statement"
-            />
+            /> */}
           </div>
           <div className="prblm-main">
             <h3>Problem Description:</h3>
-            <input
+            <span className="input-style">sjkndsnjdnsnda</span>
+            {/* <input
               type="text"
               className="input-style"
               placeholder="Enter problem description"
-            />
+            /> */}
           </div>
         </div>
         <div className="btns-div">
@@ -84,11 +89,12 @@ const Screens = () => {
 
       <div className="chat-section-div">
         <div className="chat-section">
-            {messge.map((msg) => (
-              <div className="chat-msg">
+
+          {messge.map((msg) => (
+            <div className="chat-msg">
               <p className="chat-text">{msg}</p>
-              </div>
-            ))}
+            </div>
+          ))}
         </div>
 
         <div className="chat-input">

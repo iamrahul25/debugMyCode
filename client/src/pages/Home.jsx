@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../styles/home.css";
 import Navbar from "../components/Navbar";
 
 //Import Context API for Global State
 import { useSocket } from "../context/SocketProvider";
+import StateContext from "../context/StateContextProvider";
 
 function Home() {
 
   //Importing Socket from Context API
   const socket = useSocket();
+  const { tags, setTags } = useContext(StateContext);
+  const [tagName, setTagName] = useState('')
+  const handleTagChange = (e) => {
+    setTagName(e.target.value);
+  }
+  const handleEnter = (e) => {
+    if (e.key === 'Enter') {
+      setTags([...tags, tagName]);
+      setTagName('');
+    }
+    console.log(e.target)
+  }
+  useEffect(() => {
 
+  }, [])
   return (
     <>
       <div className="home">
@@ -51,7 +66,7 @@ function Home() {
           <div className="homeRight">
             <div className="homeRight-upper">
               <h1>Add Your Problem</h1>
-              <form action="">
+              <form onSubmit={(e) => e.preventDefault()}>
                 <label htmlFor="">Problem Statement :</label>
                 <input type="text" placeholder="Enter Your Problem Statement" />
                 <label htmlFor="">Problem Description :</label>
@@ -64,7 +79,12 @@ function Home() {
                   maxLength={300}
                 ></textarea>
                 <label htmlFor="">Topic tag :</label>
-                <input type="text" placeholder="Enter Your Problem Topic" />
+                <input type="text" placeholder="Enter Your Problem Topic" value={tagName} onChange={handleTagChange} onKeyDown={handleEnter} />
+                <div className="tagsList">
+                  {
+                    tags.map((tag) => <span className="tag-name">{tag}</span>)
+                  }
+                </div>
                 <label htmlFor="">Github Link :</label>
                 <input type="text" placeholder="Enter Your Github Link" />
                 <button type="submit">Submit</button>
@@ -89,11 +109,11 @@ function Home() {
                 <a href="https://www.gmail.com/">
                   <i className="fas fa-envelope"></i>
                 </a>
-                </div>
-                <div className="footer">
+              </div>
+              <div className="footer">
                 <h5>Code is poetry written with logic, refined through debugging.</h5>
                 <p>© 2023 Debug My Code. All rights reserved.</p>
-                </div>
+              </div>
             </div>
 
           </div>
