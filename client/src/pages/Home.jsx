@@ -47,9 +47,9 @@ function Home() {
                 <p>Debug My Code is a unique platform that brings together programmers from all walks of life to collaborate, troubleshoot, and conquer coding hurdles together. Inspired by the popular Omegle concept, we've taken it a step further by focusing specifically on code debugging.
                   Here, you'll find a vibrant community of passionate programmers ready to lend a helping hand. Whether you're a beginner grappling with the basics or a seasoned pro tackling complex algorithms, our platform offers the perfect environment for you to seek assistance or provide solutions.So, whether you're in need of a coding lifeline or eager to put your expertise to good use, join Debug My Code today. Let's tackle those bugs, one line at a time, and revolutionize the way we debug our code. Together, we'll make programming smoother, faster, and more enjoyable than ever before. Happy debugging! <strong>Below link helps you to understand how to use this platform.</strong>
                 </p>
-                  <div className="guidenceLink">
-                    <a href="https://www.youtube.com/watch?v=Q6Nvc2j3iM0" target="_blank">Click here to see how can you use this website</a>
-                  </div>
+                <div className="guidenceLink">
+                  <a href="https://www.youtube.com/watch?v=Q6Nvc2j3iM0" target="_blank">Click here to see how can you use this website</a>
+                </div>
               </div>
             </div>
             <div className="lower">
@@ -78,7 +78,7 @@ function Home() {
                 ></textarea>
                 <label htmlFor="">Topic tag :</label>
                 <input type="text" placeholder="Enter Your Problem Topic" value={tagName} onChange={handleTagChange} onKeyDown={handleEnter} />
-                <div className="tagsList">
+                <div className="tags-div-home">
                   {
                     tags.map((tag) => <span className="tag-name">{tag}</span>)
                   }

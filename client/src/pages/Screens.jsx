@@ -11,10 +11,10 @@ const Screens = () => {
   const { tags, setTags } = useContext(StateContext)
 
   const handleMessageSend = (e) => {
-    if(e){
+    if (e) {
       e.preventDefault();
     }
-    
+
     setMessge([...messge, inputText]);
     setInputText("");
   };
@@ -23,7 +23,7 @@ const Screens = () => {
     <div className="screens">
       <div className="prblm-div">
         <div className="prblm">
-          <h3>Problem statement:</h3>
+          <h3>Problem statement</h3>
           <span className="input-style">sjkndsnjdnsnda</span>
           {/* <input
             type="text"
@@ -32,7 +32,7 @@ const Screens = () => {
           /> */}
         </div>
         <div className="prblm">
-          <h3>Problem Description:</h3>
+          <h3>Problem Description</h3>
           <span className="input-style">sjkndsnjdnsnda</span>
           {/* <input
             type="text"
@@ -42,19 +42,15 @@ const Screens = () => {
         </div>
       </div>
       <div className="git-link-div">
-        <span>Github Link : </span>
-        <input
-          type="text"
-          className="input-style"
-          placeholder="Enter github link..."
-        />
+        <span><i class="fa-brands fa-github"></i></span>
+        <span className="input-style">sjkndsnjdnsnda</span>
       </div>
 
       <div className="sec-screen-div">
         <div className="sec-screen">screen secondary</div>
       </div>
       <div className="tags-div">
-        <span>Main Tags : </span>
+        <span><i class="fa-solid fa-tag"></i></span>
         {tags.map((tag) => (
           <span className="tag-name">{tag}</span>
         ))}
@@ -63,7 +59,7 @@ const Screens = () => {
         <div className="main-screen-div">main screen</div>
         <div className="prblm-div-main">
           <div className="prblm-main">
-            <h3>Problem statement:</h3>
+            <h3>Problem statement</h3>
             <span className="input-style">sjkndsnjdnsnda</span>
             {/* <input
               type="text"
@@ -72,7 +68,7 @@ const Screens = () => {
             /> */}
           </div>
           <div className="prblm-main">
-            <h3>Problem Description:</h3>
+            <h3>Problem Description</h3>
             <span className="input-style">sjkndsnjdnsnda</span>
             {/* <input
               type="text"
@@ -101,25 +97,21 @@ const Screens = () => {
         </div>
 
         <div className="chat-input">
-        <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)}   onKeyDown={(e) => {if (e.key === "Enter") {handleMessageSend();}}} placeholder="Type here..." className="input-style "></input>
-          <button onClick={handleMessageSend} className="btn">send</button>
+          <input type="text" value={inputText} onChange={(e) => setInputText(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") { handleMessageSend(); } }} placeholder="Type here..." className="input-style "></input>
+          <button onClick={handleMessageSend} className="btn"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
 
       </div>
 
       <div className="tags-div main-tags-div">
-        <span>Main Tags : </span>
+        <span><i class="fa-solid fa-tag"></i></span>
         {tags.map((tag) => (
           <span className="tag-name">{tag}</span>
         ))}
       </div>
       <div className="git-link-div main-git-div ">
-        <span>Github Link : </span>
-        <input
-          type="text"
-          className="input-style"
-          placeholder="Enter github link..."
-        />
+        <span><i class="fa-brands fa-github"></i></span>
+        <span className="input-style">sjkndsnjdnsnda</span>
       </div>
     </div>
   );
