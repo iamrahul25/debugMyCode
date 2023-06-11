@@ -1,11 +1,16 @@
 import React, { useContext, useState } from "react";
-import "../styles/screen.css";
+import ReactPlayer from "react-player";
+
 import UserContext from "../context/UserContext";
+import "../styles/screen.css";
 
 const Screens = () => {
 
 	//Current User Data
 	const { formData, setFormData } = useContext(UserContext);
+
+	//My Stream
+	const [myStream, setMyStream] = useState(null);
 
 	//Other User Data
 	const [otherUser, setOtherUser] = useState({
@@ -26,6 +31,18 @@ const Screens = () => {
 		setInputText("");
 	};
 
+	//Function to start Recording
+	const startRecording = async () => {
+		const stream = await navigator.mediaDevices.getUserMedia({ video:true, audio: true });
+		setMyStream(stream);
+	};
+
+	//Function to stop Recording
+	const stopRecording = () => {
+		myStream.getTracks().forEach((track) => track.stop());
+		setMyStream(null);
+	};
+
 	return (
 		<div className="screens">
 			<div className="prblm-div">
@@ -43,8 +60,9 @@ const Screens = () => {
 				<span className="input-style">{formData.githubLink}</span>
 			</div>
 
+			{/* Current User Screen---------------- */}
 			<div className="sec-screen-div">
-				<div className="sec-screen">screen secondary</div>
+				{myStream && <ReactPlayer url={myStream} playing muted width="100%" height="100%" />}
 			</div>
 
 			<div className="tags-div">
@@ -70,7 +88,8 @@ const Screens = () => {
 					<button>
 						<i className="fa-solid fa-microphone-slash"></i>
 					</button>
-					<button className="btn">Start</button>
+					<button onClick={startRecording} className="btn">Start</button>
+					<button onClick={stopRecording} className="btn">Stop</button>
 					<button className="btn">Next</button>
 				</div>
 			</div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
@@ -12,9 +12,9 @@ import UserContext from '../context/UserContext';
 function Home() {
 
     //User Context API
-    const {formData, setFormData} = useContext(UserContext);
+    const { formData, setFormData, showScreen, setShowScreen } = useContext(UserContext);
 
-    //Importing Socket from Context API
+    //Importing Socket from Context API 
     const socket = useSocket();
 
     //Navigate - To other Pages!
@@ -28,12 +28,12 @@ function Home() {
     const problemDescription = useRef("");
     const tagName = useRef("");
     const githubLink = useRef("");
-    
+
     //Function to clear all the tags
     const clearAllTags = () => {
         setTagList([]);
     }
-    
+
     //Function to handle Enter Key Press!
     const handleEnterKey = (e) => {
         if (e.key === "Enter" && tagName.current.value.trim() !== "") {
@@ -58,9 +58,27 @@ function Home() {
         console.log("Form Data: ", formValues);
         setFormData(formValues);
 
-        //Redirect to Screen Page!
-        navigate("/screen");
+        //User Joined Website! Emitting Event to Server!
+        socket.emit("user-joined", formValues);
     }
+
+    useEffect(() => {
+        
+        //Function to handle Screen
+        function handleScreen(data) {
+            console.log("User Joined Server! \n", data)
+            setShowScreen(true);
+            navigate(`/screen/${data.socketId}`);
+        }
+
+        //Listening to the Event
+        socket.on("joined-server", handleScreen);
+
+        //Cleanup
+        return () => socket.off("joined-server", handleScreen);
+
+    }, [socket]);
+
 
     return (
         <>
@@ -73,7 +91,7 @@ function Home() {
 
                             <div className="upper-upper">
                                 <p> Are you tired of staring at lines of code, desperately searching for that elusive bug? Or perhaps you're an expert programmer looking to put your skills to the test and help others overcome their coding challenges. Well, you've come to the right place!</p>
-                                <img src="https://t3.ftcdn.net/jpg/00/42/09/98/240_F_42099891_6Sz9g70EoF2AQhogDZiFE9UQ2ncan1Pk.jpg" alt=""/>
+                                <img src="https://t3.ftcdn.net/jpg/00/42/09/98/240_F_42099891_6Sz9g70EoF2AQhogDZiFE9UQ2ncan1Pk.jpg" alt="" />
                             </div>
 
                             <div className="upper-lower">
@@ -102,7 +120,7 @@ function Home() {
 
                                 <label htmlFor="statement">Problem Statement :</label>
                                 <input ref={problemStatement} type="text" name="statement" placeholder="Enter Your Problem Statement" />
-                                
+
                                 <label htmlFor="description">Problem Description :</label>
                                 <textarea name="problemDescription" ref={problemDescription} cols="20" rows="3" placeholder="Enter a description..."></textarea>
 
@@ -111,10 +129,10 @@ function Home() {
 
                                 <div className="tags-div-home">
                                     {
-                                        tagList.map((tag, index) => ( <span key={index} className="tag-name">{tag}</span>))
+                                        tagList.map((tag, index) => (<span key={index} className="tag-name">{tag}</span>))
                                     }
                                 </div>
-                                
+
                                 <label htmlFor="githubLink">Github Link :</label>
                                 <input ref={githubLink} type="text" name="githubLink" placeholder="Enter Your Github Link" />
 
