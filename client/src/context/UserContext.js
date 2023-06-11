@@ -10,8 +10,10 @@ export const UserContextProvider = ({ children }) => {
 		allTags: [],
   });
 
+  const [showScreen, setShowScreen] = useState(false);
+
   return (
-    <UserContext.Provider value={{ formData, setFormData }}>
+    <UserContext.Provider value={{ formData, setFormData, showScreen, setShowScreen }}>
       {children}
     </UserContext.Provider>
   );

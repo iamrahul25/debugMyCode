@@ -12,7 +12,7 @@ import UserContext from '../context/UserContext';
 function Home() {
 
     //User Context API
-    const {formData, setFormData} = useContext(UserContext);
+    const {formData, setFormData, showScreen, setShowScreen} = useContext(UserContext);
 
     //Importing Socket from Context API
     const socket = useSocket();
@@ -56,9 +56,10 @@ function Home() {
         }
 
         console.log("Form Data: ", formValues);
-        setFormData(formValues);
 
         //Redirect to Screen Page!
+        setFormData(formValues);
+        setShowScreen(true);
         navigate("/screen");
     }
 
