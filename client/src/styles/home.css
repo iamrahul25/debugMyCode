@@ -192,6 +192,18 @@ textarea {
 
 }
 
+.clear-all-btn{
+  background-color: #223a51;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+.clear-all-btn:hover{
+  background-color: #2696eb;
+}
+
 /* .tag-name {
   width: fit-content;
   height: fit-content;
@@ -205,7 +217,7 @@ textarea {
 } */
 
 
-button[type="submit"] {
+input[type="submit"] {
   padding: 10px 20px;
   background-color: #223a51;
 
@@ -216,7 +228,7 @@ button[type="submit"] {
   margin-bottom: 20px;
 }
 
-button[type="submit"]:hover {
+input[type="submit"]:hover {
   background-color: #2696eb;
 }
 
