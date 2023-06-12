@@ -58,28 +58,13 @@ function Home() {
         console.log("Form Data: ", formValues);
         setFormData(formValues);
 
-        //User Joined Website! Emitting Event to Server!
-        socket.emit("user-joined", formValues);
+        //Navigate to Screen Page!
+        setShowScreen(true);
+        navigate('/screen');
+
     }
 
-    useEffect(() => {
-        
-        //Function to handle Screen
-        function handleScreen(data) {
-            console.log("User Joined Server! \n", data)
-            setShowScreen(true);
-            navigate(`/screen/${data.socketId}`);
-        }
-
-        //Listening to the Event
-        socket.on("joined-server", handleScreen);
-
-        //Cleanup
-        return () => socket.off("joined-server", handleScreen);
-
-    }, [socket]);
-
-
+    
     return (
         <>
             <div className="home">
