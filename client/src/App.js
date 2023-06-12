@@ -14,7 +14,7 @@ function App() {
 		<div className="App">
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/screen/:socketId" element={ (showScreen) ? <Screens/> : <Navigate to="/"/> } />
+				<Route path="/screen" element={ (showScreen) ? <Screens/> : <Navigate to="/"/> } />
 			</Routes>
 		</div>
 	);
